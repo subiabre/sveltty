@@ -1,0 +1,1 @@
+<code>clear</code> - Clears the stdout.
