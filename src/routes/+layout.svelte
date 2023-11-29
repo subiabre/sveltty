@@ -18,7 +18,10 @@
         event: CustomEvent<{ value: string; keyboard: KeyboardEvent }>,
     ) {
         // Autocomplete
-        if (event.detail.keyboard.key === "Tab") {
+        if (
+            event.detail.keyboard.key === "Tab" &&
+            event.detail.keyboard.shiftKey === false
+        ) {
             event.detail.keyboard.preventDefault();
 
             let args = event.detail.value.trimEnd()?.split(" ");
