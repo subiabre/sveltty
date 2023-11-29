@@ -28,7 +28,7 @@
 
 <article>
     {#if commands.length > 1}
-        <p>Type `help` [<span>command</span>] to get detailed help on a given command.</p>
+        <p>Type <code>help</code> [<cli-info>command</cli-info>] to get detailed help on a given command.</p>
         <p>Available commands:</p>
         <ul>
             {#each commands as command}

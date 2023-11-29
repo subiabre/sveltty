@@ -4,7 +4,7 @@
 
 <article>
     <p>
-        <strong>ERROR</strong>: Command '<span>{args[0]}</span>' is not a valid
+        <cli-danger>ERROR</cli-danger>: Command '<cli-alert>{args[0]}</cli-alert>' is not a valid
         command.
     </p>
     <p>

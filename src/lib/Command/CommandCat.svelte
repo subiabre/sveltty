@@ -23,6 +23,6 @@
     <MessageMarkdown meta={post.metadata} body={post.default} on:mount={updateLocation} />
 {:catch}
     <p>
-        <strong>ERROR</strong>: File '<span>{args[1]}</span>' not found.
+        <cli-danger>ERROR</cli-danger>: File '<cli-alert>{args[1]}</cli-alert>' not found.
     </p>
 {/await}
