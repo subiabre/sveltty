@@ -1,4 +1,5 @@
 <script lang="ts">
+    import "../app.css";
     import CommandPrompt from "$lib/Command/CommandPrompt.svelte";
     import TerminalInput from "$lib/Terminal/TerminalInput.svelte";
     import TerminalOutput from "$lib/Terminal/TerminalOutput.svelte";
@@ -24,6 +25,7 @@
 
             const auto = await shell.auto(args);
             input.write(auto.join(" "));
+            input.focus();
         }
 
         // Submit
@@ -31,59 +33,61 @@
             event.detail.keyboard.preventDefault();
 
             const args = $stdin.input[$stdin.index].split(" ");
+            mainHeight = main.scrollHeight;
 
             stdin.send();
+
             stdout.write(CommandPrompt, { args });
             stdout.write(shell.exec(args[0]), { args });
-
-            setTimeout(() => {
-                main.scroll({
-                    top: mainHeight,
-                    behavior: "smooth",
-                });
-
-                mainHeight = main.scrollHeight;
-            }, 100);
         }
 
         // Previous input
         if (event.detail.keyboard.key === "ArrowUp") {
             stdin.prev();
+            input.focus();
         }
 
         // Next input
         if (event.detail.keyboard.key === "ArrowDown") {
             stdin.next();
+            input.focus();
         }
-
-        input.focus();
     }
+
+    stdout.subscribe(() => {
+        if (typeof main !== "object") return;
+
+        setTimeout(() => {
+            main.scroll({
+                top: mainHeight,
+                behavior: "smooth",
+            });
+        }, 100);
+    });
 </script>
 
 <main bind:this={main}>
-    <slot />
-    <TerminalOutput bind:this={output} values={$stdout} />
-    <TerminalPrompt>
-        <TerminalInput
-            bind:this={input}
-            bind:value={$stdin.input[$stdin.index]}
-            on:input={handleInput}
-        />
-    </TerminalPrompt>
+    <div>
+        <slot />
+        <TerminalOutput bind:this={output} values={$stdout} />
+        <TerminalPrompt>
+            <TerminalInput
+                bind:this={input}
+                bind:value={$stdin.input[$stdin.index]}
+                on:input={handleInput}
+            />
+        </TerminalPrompt>
+    </div>
 </main>
 
 <style>
-    :global(body) {
-        height: 100dvh;
-
-        margin: 0;
-    }
-
     main {
-        height: calc(100% - 2em);
-
-        padding: 1em;
+        height: 100%;
 
         overflow-y: scroll;
+    }
+
+    div {
+        max-width: 75ch;
     }
 </style>

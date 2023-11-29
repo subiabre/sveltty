@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+:root {
+    --color-white: #f8f9fa;
+    --color-black: #000000;
+    --color-red: #ff5d6b;
+    --color-blue: #9aa1f9;
+    --color-green: #23fa74;
+    --color-yellow: #ffa20a;
+
+    --color-text: var(--color-white);
+    --color-background: var(--color-black);
+
+    --line-height: 1.5em;
+}
+
+* {
+    text-rendering: geometricPrecision;
+}
+
+body {
+    height: calc(100dvh - 2em);
+
+    margin: 0;
+    padding: 1em;
+
+    font-size: 90%;
+    font-family: 'DejaVu Sans Mono', monospace;
+
+    color: var(--color-text);
+    background-color: var(--color-background);
+}
+
+cli-alert {
+    color: var(--color-yellow);
+}
+
+cli-danger {
+    color: var(--color-black);
+    background-color: var(--color-red);
+}
+
+cli-info {
+    font-weight: bold;
+
+    color: var(--color-blue);
+}
+
+a {
+    color: var(--color-blue);
+    background: linear-gradient(to left, transparent 50%, var(--color-blue) 50%) right;
+    background-size: 210% 100%;
+    background-color: transparent;
+
+    transition: background-position 0.2s ease;
+}
+
+a:hover {
+    color: var(--color-background);
+    background-position: left;
+    background-color: transparent;
+
+    transition: background-position 0.2s ease;
+}
+
+pre {
+    padding: 1em 0;
+    overflow-x: scroll;
+}
+
+code {
+    font-size: 1.25em;
+    font-family: 'VT323', monospace;
+
+    line-height: 0.75em;
+
+    color: var(--color-green);
+}
+
+blockquote {
+    margin: 0 0 0 3ch;
+}
+
+ol, ul {
+    padding: 0 0 0 3ch;
+}
+
+ol {
+    list-style: decimal;
+}
+
+ul {
+    list-style: square;
+}
