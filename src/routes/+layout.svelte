@@ -9,7 +9,7 @@
     import { stdout } from "$lib/stdout";
 
     let main: HTMLElement;
-    let mainHeight: number = 0;
+    let scroll: number = 0;
 
     let input: TerminalInput;
     let output: TerminalOutput;
@@ -33,7 +33,6 @@
             event.detail.keyboard.preventDefault();
 
             const args = $stdin.input[$stdin.index].split(" ");
-            mainHeight = main.scrollHeight;
 
             stdin.send();
 
@@ -59,10 +58,14 @@
 
         setTimeout(() => {
             main.scroll({
-                top: mainHeight,
+                top: scroll,
                 behavior: "smooth",
             });
         }, 100);
+
+        setTimeout(() => {
+            scroll = main.scrollHeight;
+        }, 200);
     });
 </script>
 
