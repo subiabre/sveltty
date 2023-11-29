@@ -2,6 +2,7 @@
     import { goto } from "$app/navigation";
     import { page } from "$app/stores";
     import MessageMarkdown from "$lib/Message/MessageMarkdown.svelte";
+    import { stdout } from "$lib/stdout";
 
     export let args: string[];
 
@@ -10,9 +11,17 @@
     // have the path built before the import despite just being a string
     // I hate JavaScript
     const path = `../../posts/${args[1]}`;
-    const post = import(/* @vite-ignore */path);
+    const post = import(/* @vite-ignore */ path);
 
     function updateLocation() {
+        if (
+            $stdout.length > 0 &&
+            $stdout[$stdout.length - 1].props.args[0] === "cat" &&
+            $stdout[$stdout.length - 1].props.args[1] === $page.params.file
+        ) {
+            return;
+        }
+
         if ($page.url.pathname !== `/${args[1]}`) goto(args[1]);
     }
 </script>
@@ -20,9 +29,14 @@
 {#await post}
     <p>Loading</p>
 {:then post}
-    <MessageMarkdown meta={post.metadata} body={post.default} on:mount={updateLocation} />
+    <MessageMarkdown
+        meta={post.metadata}
+        body={post.default}
+        on:mount={updateLocation}
+    />
 {:catch}
     <p>
-        <cli-danger>ERROR</cli-danger>: File '<cli-alert>{args[1]}</cli-alert>' not found.
+        <cli-danger>ERROR</cli-danger>: File '<cli-alert>{args[1]}</cli-alert>'
+        not found.
     </p>
 {/await}
