@@ -2,7 +2,8 @@
     export let verbose: boolean = false;
 </script>
 
-<code>help</code> [<span>command</span>] - Print help on available commands.
+<code>help</code> [<cli-info>command</cli-info>]
+<p>Print help on available commands.</p>
 {#if verbose}
     <ul>
         <li>
@@ -12,7 +13,7 @@
             Arguments:
             <ul>
                 <li>
-                    [<span>command</span>] - Optional.
+                    [<cli-info>command</cli-info>] - Optional.
                 </li>
             </ul>
         </li>

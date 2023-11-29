@@ -2,7 +2,8 @@
     export let verbose: boolean = false;
 </script>
 
-<code>ls</code> - List the contents of the directory.
+<code>ls</code>
+<p>List the contents of the directory.</p>
 {#if verbose}
     <ul>
         <li>
