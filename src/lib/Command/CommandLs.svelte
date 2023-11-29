@@ -9,7 +9,7 @@
         {#each posts as post}
             <li>
                 <a href={post.slug}>
-                    {post.data.metadata?.title || post.slug}
+                    {post.slug}
                 </a>
             </li>
         {/each}

@@ -4,10 +4,19 @@
     export let value: string;
 
     export function focus() {
+        if (typeof window === "undefined") return;
+
+        const range = document.createRange();
+        const selection = window.getSelection();
+
         setTimeout(() => {
-            input.focus();
-            input.setSelectionRange(value.length, value.length);
-        }, 0);
+            range.setStart(input.childNodes[0] || input, value.length);
+
+            range.collapse(true);
+
+            selection?.removeAllRanges();
+            selection?.addRange(range);
+        }, 10);
     }
 
     export function clear() {
@@ -18,39 +27,84 @@
         value = message;
     }
 
+    const dispatch = createEventDispatcher<{
+        input: { value: string; keyboard: KeyboardEvent };
+    }>();
+
+    let input: HTMLSpanElement;
+
     function handleInput(event: KeyboardEvent) {
         dispatch("input", {
             value: value,
             keyboard: event,
         });
     }
-
-    const dispatch = createEventDispatcher<{
-        input: { value: string; keyboard: KeyboardEvent };
-    }>();
-
-    let input: HTMLInputElement;
 </script>
 
-<form on:submit|preventDefault>
-    <input
-        type="text"
-        autocomplete="off"
-        bind:value
-        bind:this={input}
-        on:keydown={handleInput}
-    />
-</form>
+<span
+    id="input"
+    tabindex="0"
+    role="textbox"
+    aria-label="Type help to get a list of available commands"
+    spellcheck="false"
+    autocorrect="false"
+    autocapitalize="false"
+    contenteditable="true"
+    bind:this={input}
+    bind:innerHTML={value}
+    on:keydown={handleInput}
+/>
+
+<button on:click={() => focus()}>Unlock input.</button>
 
 <style>
-    form input {
-        width: 100%;
-        padding: 0;
+    @keyframes blink {
+        from {
+            background-color: rgba(255, 255, 255);
+        }
+        to {
+            background-color: rgba(0, 0, 0);
+        }
+    }
 
-        border: none;
+    span[contenteditable="true"] {
+        line-break: auto;
+
+        block-size: 1ch;
+        min-inline-size: 100%;
+        writing-mode: horizontal-tb;
+    }
+
+    span[contenteditable="true"]::after {
+        content: "\00a0 ";
+        white-space: pre;
+
         outline: none;
+        mix-blend-mode: difference;
 
-        font-size: inherit;
-        font-family: inherit;
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    span[contenteditable="true"]:focus-visible {
+        outline: none;
+    }
+
+    span[contenteditable="true"]:focus-visible::after {
+        animation-name: blink;
+        animation-duration: 0.6s;
+        animation-direction: alternate;
+        animation-iteration-count: infinite;
+    }
+
+    button {
+        position: absolute;
+
+        width: 100%;
+
+        opacity: 0;
+    }
+
+    button:hover {
+        cursor: pointer;
     }
 </style>

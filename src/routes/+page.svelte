@@ -1,6 +1,7 @@
 <script lang="ts">
     import MessageWelcome from "$lib/Message/MessageWelcome.svelte";
     import { stdout } from "$lib/stdout";
+    import { onMount } from "svelte";
 
-    stdout.write(MessageWelcome);
+    onMount(() => stdout.write(MessageWelcome));
 </script>

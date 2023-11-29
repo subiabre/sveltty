@@ -15,16 +15,16 @@
     {#if meta}
         <header>
             <h1>
-                <span>{meta.title}</span>
+                <cli-title>{meta.title}</cli-title>
             </h1>
 
             <dl>
-                {#each Object.entries(meta) as data}
-                    <dt>{data[0]}</dt>
+                {#each Object.entries(meta).filter((meta) => meta[0] !== "title") as data}
+                    <dt>{data[0]}:</dt>
                     <dd>{data[1]}</dd>
                 {/each}
             </dl>
-        </header>        
+        </header>
     {/if}
 
     <svelte:component this={body} />

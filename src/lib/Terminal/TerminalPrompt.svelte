@@ -5,20 +5,22 @@
 </script>
 
 <div class="prompt">
-    <div class="prompt-code">
-        <code>{user}@{host}</code>:<strong>{path}</strong>$&nbsp;
+    <div class="prompt-data">
+        <code>{user}@{host}</code>:<cli-info>{path}</cli-info>$
     </div>
-    <div class="prompt-slot">
-        <slot />
-    </div>
+    <slot />
 </div>
 
 <style>
     .prompt {
-        display: flex;
+        position: relative;
+
+        margin: 1rem 0;
+
+        overflow-x: hidden;
     }
 
-    .prompt-slot {
-        flex-grow: 1;
+    .prompt-data {
+        display: inline-block;
     }
 </style>
