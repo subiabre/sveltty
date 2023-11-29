@@ -4,7 +4,7 @@
     export let path: string = "/app";
 </script>
 
-<div class="prompt">
+<div class="prompt" tabindex="-1">
     <div class="prompt-data">
         <code>{user}@{host}</code>:<cli-info>{path}</cli-info>$
     </div>
@@ -15,7 +15,7 @@
     .prompt {
         position: relative;
 
-        margin: 1rem 0;
+        padding: 1rem 0;
 
         overflow-x: hidden;
     }

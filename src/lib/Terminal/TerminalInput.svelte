@@ -45,11 +45,11 @@
     id="input"
     tabindex="0"
     role="textbox"
-    aria-label="Type help to get a list of available commands"
+    autocorrect="off"
     spellcheck="false"
-    autocorrect="false"
-    autocapitalize="false"
+    autocapitalize="off"
     contenteditable="true"
+    aria-label="Type help to get a list of available commands"
     bind:this={input}
     bind:innerHTML={value}
     on:keydown={handleInput}
@@ -60,10 +60,10 @@
 <style>
     @keyframes blink {
         from {
-            background-color: rgba(255, 255, 255);
+            background-color: var(--color-text);
         }
         to {
-            background-color: rgba(0, 0, 0);
+            background-color: var(--color-background);
         }
     }
 
@@ -73,6 +73,12 @@
         block-size: 1ch;
         min-inline-size: 100%;
         writing-mode: horizontal-tb;
+
+        box-shadow:
+            inset -1px 0 0 var(--color-text),
+            inset 0 -1px 0 var(--color-text),
+            inset 1px 0 0 var(--color-text),
+            inset 0 1px 0 var(--color-text);
     }
 
     span[contenteditable="true"]::after {
@@ -80,18 +86,16 @@
         white-space: pre;
 
         outline: none;
-        mix-blend-mode: difference;
-
-        background-color: rgba(255, 255, 255, 0.5);
     }
 
     span[contenteditable="true"]:focus-visible {
         outline: none;
+        box-shadow: none;
     }
 
     span[contenteditable="true"]:focus-visible::after {
         animation-name: blink;
-        animation-duration: 0.6s;
+        animation-duration: 0.61s;
         animation-direction: alternate;
         animation-iteration-count: infinite;
     }
