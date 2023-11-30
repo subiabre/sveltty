@@ -1,7 +1,7 @@
 <script lang="ts">
     import { goto } from "$app/navigation";
     import { page } from "$app/stores";
-    import MessageMarkdown from "$lib/Message/MessageMarkdown.svelte";
+    import Message from "$lib/Message/Message.svelte";
     import { stdout } from "$lib/stdout";
 
     export let args: string[];
@@ -29,11 +29,9 @@
 {#await post}
     <p>Loading</p>
 {:then post}
-    <MessageMarkdown
-        meta={post.metadata}
-        body={post.default}
-        on:mount={updateLocation}
-    />
+    <Message on:mount={updateLocation}>
+        <svelte:component this={post.default} />
+    </Message>
 {:catch}
     <p>
         <cli-danger>ERROR</cli-danger>: File '<cli-alert>{args[1]}</cli-alert>'
