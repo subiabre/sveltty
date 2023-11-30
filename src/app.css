@@ -12,6 +12,9 @@
     --color-background: var(--color-black);
 
     --line-height: 1.5em;
+
+    --typeface-code: 'VT323', monospace;
+    --typeface-text: 'DejaVu Sans Mono', monospace;
 }
 
 * {
@@ -24,8 +27,8 @@ body {
     margin: 0;
     padding: 1em;
 
-    font-size: 90%;
-    font-family: 'DejaVu Sans Mono', monospace;
+    font-size: 88%;
+    font-family: var(--typeface-text);
 
     color: var(--color-text);
     background-color: var(--color-background);
@@ -46,21 +49,44 @@ cli-info {
     color: var(--color-blue);
 }
 
-a {
-    color: var(--color-blue);
-    background: linear-gradient(to left, transparent 50%, var(--color-blue) 50%) right;
-    background-size: 210% 100%;
-    background-color: transparent;
+cli-title {
+    font-weight: bold;
+    line-height: 1.5em;
 
-    transition: background-position 0.2s ease;
+    color: var(--color-background);
+    background-color: var(--color-text);
 }
 
-a:hover {
-    color: var(--color-background);
-    background-position: left;
-    background-color: transparent;
+a {
+    position: relative;
 
-    transition: background-position 0.2s ease;
+    color: var(--color-text);
+}
+
+a[rel="nofollow"]::after,
+a[target="_blank"]::after {
+    content: '↗';
+}
+
+a:link::before {
+    position: absolute;
+
+    width: 0;
+    height: 100%;
+
+    left: -0.25ch;
+    bottom: 0;
+
+    content: "";
+    background: var(--color-blue);
+
+    transition: all .3s ease;
+}
+
+a:link:focus::before,
+a:link:hover::before {
+    width: calc(100% + 0.5ch);
+    mix-blend-mode: difference;
 }
 
 pre {
@@ -70,7 +96,7 @@ pre {
 
 code {
     font-size: 1.25em;
-    font-family: 'VT323', monospace;
+    font-family: var(--typeface-code);
 
     line-height: 0.75em;
 
@@ -81,7 +107,8 @@ blockquote {
     margin: 0 0 0 3ch;
 }
 
-ol, ul {
+ol,
+ul {
     padding: 0 0 0 3ch;
 }
 

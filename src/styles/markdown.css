@@ -1,0 +1,106 @@
+.md h1::before {
+    color: grey;
+    content: '# ';
+}
+
+.md h2::before {
+    color: grey;
+    content: '## ';
+}
+
+.md h3::before {
+    color: grey;
+    content: '### ';
+}
+
+.md h4::before {
+    color: grey;
+    content: '#### ';
+}
+
+.md blockquote {
+    position: relative;
+    overflow: hidden;
+
+    margin: 0;
+    padding: 0 0 0 3ch;
+}
+
+.md blockquote::after {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    color: grey;
+    white-space: pre;
+
+    content:
+        ">\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A"
+        ">\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A"
+        ">\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A"
+        ">\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A"
+        ">\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A"
+        ">\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A"
+        ">\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A";
+}
+
+.md blockquote>p {
+    margin: 0;
+}
+
+.md :not(pre) code::before {
+    color: grey;
+    content: '`';
+}
+
+.md :not(pre) code::after {
+    color: grey;
+    content: '`';
+}
+
+.md pre code::before {
+    display: block;
+
+    color: grey;
+    content: '```' attr(class);
+}
+
+.md pre code::after {
+    display: block;
+
+    color: grey;
+    content: '```';
+}
+
+.md table {
+    color: var(--color-text);
+    border-collapse: collapse;
+}
+
+.md table td,
+.md table th {
+    padding: 0 1ch;
+    text-align: left;
+    vertical-align: top;
+
+    font-size: 1em;
+    border: 1px solid var(--color-text);
+}
+
+.md table thead th {
+    font-size: 1em
+}
+
+.md table tfoot tr th {
+    font-weight: 500
+}
+
+.md table caption {
+    font-size: 1em;
+    margin: 0 0 1em
+}
+
+.md li::marker {
+    color: grey;
+}
