@@ -2,7 +2,7 @@
     import { page } from "$app/stores";
 
     /**
-     * @type {any}
+     * @type {string}
      */
     export let title;
 
@@ -12,12 +12,17 @@
     export let date;
 
     /**
+     * @type {string}
+     */
+    export let slug;
+
+    /**
      * @type {any}
      */
     export let description;
 
     $: date = new Date(date).toISOString().split("T")[0];
-    $: link = $page.url.href;
+    $: link = `${$page.url.origin}${slug}`;
 </script>
 
 <header class="dashed-vector">

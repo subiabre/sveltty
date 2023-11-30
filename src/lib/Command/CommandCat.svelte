@@ -30,7 +30,7 @@
     <p>Loading</p>
 {:then post}
     <Message on:mount={updateLocation}>
-        <svelte:component this={post.default} />
+        <svelte:component this={post.default} slug={`/${args[1]}`} />
     </Message>
 {:catch}
     <p>
