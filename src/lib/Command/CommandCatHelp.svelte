@@ -16,8 +16,8 @@
             Arguments:
             <ul>
                 <li>
-                    &lt;<cli-alert>file</cli-alert>&gt; - Path to the file to be
-                    read.
+                    &lt;<cli-alert>file</cli-alert>&gt; - Required. Name of the
+                    file to be read.
                 </li>
             </ul>
         </li>

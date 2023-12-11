@@ -2,7 +2,7 @@
     export let verbose: boolean = false;
 </script>
 
-<code>date</code> [<cli-info>n</cli-info>]
+<code>date</code> [<cli-info>delay</cli-info>]
 <p>Display the ISO 8601 date in real time.</p>
 {#if verbose}
     <ul>
@@ -16,7 +16,8 @@
             Arguments:
             <ul>
                 <li>
-                    [<cli-info>n</cli-info>] - Optional. Default: 10.
+                    [<cli-info>delay</cli-info>] - Optional. Default: 10.
+                    Refresh rate in milliseconds.
                 </li>
             </ul>
         </li>

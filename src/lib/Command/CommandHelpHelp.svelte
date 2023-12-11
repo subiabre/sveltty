@@ -13,7 +13,8 @@
             Arguments:
             <ul>
                 <li>
-                    [<cli-info>command</cli-info>] - Optional.
+                    [<cli-info>command</cli-info>] - Optional. Default: none.
+                    Command for which to show help.
                 </li>
             </ul>
         </li>
