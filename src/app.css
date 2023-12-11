@@ -27,8 +27,9 @@ body {
     margin: 0;
     padding: 1em;
 
-    font-size: 88%;
+    font-size: 89%;
     font-family: var(--typeface-text);
+    line-height: 150%;
 
     color: var(--color-text);
     background-color: var(--color-background);
@@ -90,7 +91,7 @@ a:link:hover::before {
 }
 
 pre {
-    padding: 1em 0;
+    padding: 0;
     overflow-x: scroll;
 }
 
@@ -112,10 +113,39 @@ ul {
     padding: 0 0 0 3ch;
 }
 
+:not(li)>ol,
+:not(li)>ul {
+    margin: 1.5rem 0 0 0;
+}
+
 ol {
     list-style: decimal;
 }
 
 ul {
     list-style: square;
+}
+
+p:first-child {
+    margin: 0;
+}
+
+p:not(:first-child) {
+    margin: 1.5rem 0 0 0;
+}
+
+h1 {
+    margin: 2.25rem 0;
+}
+
+h2 {
+    margin: 2rem 0;
+}
+
+h3 {
+    margin: 1.75rem 0;
+}
+
+h4 {
+    margin: 1.5rem 0;
 }

@@ -46,7 +46,21 @@
     @import "../../styles/markdown.css";
 
     header {
-        border-top: 0.1em dashed var(--color-text);
-        border-bottom: 0.1em dashed var(--color-text);
+        margin: 0 0 2rem 0;
+
+        border-top: 0.1rem dashed var(--color-text);
+        border-bottom: 0.1rem dashed var(--color-text);
+    }
+
+    header > *:not(:last-child) {
+        margin: 1em 0 0 0;
+    }
+
+    header > *:first-child {
+        margin: 2rem 0 0 0;
+    }
+
+    header > *:last-child {
+        margin: 1em 0 2rem 0;
     }
 </style>
