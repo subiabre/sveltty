@@ -59,14 +59,8 @@
     content: '`';
 }
 
-.md pre code::before {
-    display: block;
-
-    color: grey;
-    content: '```' attr(class);
-}
-
-.md pre code::after {
+.md pre>code::after,
+.md pre>code::before {
     display: block;
 
     color: grey;
