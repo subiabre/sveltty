@@ -69,6 +69,7 @@
 
     span[contenteditable="true"] {
         line-break: auto;
+        white-space: pre-wrap;
 
         block-size: 1ch;
         min-inline-size: 100%;

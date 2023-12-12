@@ -35,7 +35,9 @@
         if (event.detail.keyboard.key === "Enter") {
             event.detail.keyboard.preventDefault();
 
-            const args = $stdin.input[$stdin.index].split(" ");
+            const args = $stdin.input[$stdin.index]
+                .split(" ")
+                .filter((arg) => arg);
 
             stdin.send();
 
