@@ -35,18 +35,24 @@ body {
     background-color: var(--color-background);
 }
 
+body *:focus-visible {
+    outline-color: var(--color-text);
+    outline-width: 1px;
+    outline-style: solid;
+}
+
 cli-alert {
     color: var(--color-yellow);
 }
 
 cli-danger {
+    font-weight: bold;
+
     color: var(--color-black);
     background-color: var(--color-red);
 }
 
 cli-info {
-    font-weight: bold;
-
     color: var(--color-blue);
 }
 
@@ -69,25 +75,21 @@ a[target="_blank"]::after {
     content: '↗';
 }
 
-a:link::before {
-    position: absolute;
+a {
+    background: linear-gradient(to left, transparent 50%, var(--color-blue) 50%) right;
+    background-size: 210% 100%;
+    background-color: transparent;
 
-    width: 0;
-    height: 100%;
-
-    left: -0.25ch;
-    bottom: 0;
-
-    content: "";
-    background: var(--color-blue);
-
-    transition: all .3s ease;
+    transition: background-position 0.4s ease;
 }
 
-a:link:focus::before,
-a:link:hover::before {
-    width: calc(100% + 0.5ch);
-    mix-blend-mode: difference;
+a:hover {
+    color: var(--color-background);
+
+    background-position: left;
+    background-color: transparent;
+
+    transition: background-position 0.3s ease;
 }
 
 pre {

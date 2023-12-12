@@ -8,5 +8,7 @@
 </script>
 
 {#each values as value}
-    <svelte:component this={value.output} {...value.props} />
+    <div class="output">
+        <svelte:component this={value.output} {...value.props} />
+    </div>
 {/each}

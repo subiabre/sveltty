@@ -6,12 +6,21 @@
 
 {#await posts then posts}
     <p>total {posts.length}</p>
-    <ol>
-        {#each posts as post}
-            <li>
-                <p><a href={post.slug}>{post.slug}</a></p>
-                <p>{post.meta.title}</p>
-            </li>
-        {/each}
-    </ol>
+    <table>
+        <tbody>
+            {#each posts as post}
+                <tr>
+                    <!-- <td>{post.meta.title}</td> -->
+                    <td>{post.meta.date}</td>
+                    <td><a title={post.meta.title} href={post.slug}>{post.slug}</a></td>
+                </tr>
+            {/each}
+        </tbody>
+    </table>
 {/await}
+
+<style>
+    tr td:last-child {
+        padding: 0 0 0 1rem;
+    }
+</style>

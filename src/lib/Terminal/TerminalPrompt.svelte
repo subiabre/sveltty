@@ -15,8 +15,6 @@
     .prompt {
         position: relative;
 
-        padding: 0 0 1em 0;
-
         overflow-x: hidden;
     }
 
