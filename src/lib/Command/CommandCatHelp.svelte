@@ -2,8 +2,11 @@
     export let verbose: boolean = false;
 </script>
 
-<code>cat</code> &lt;<cli-alert>file</cli-alert>&gt;
-<p>Print the contents of a file.</p>
+<p>
+    <code>cat</code> &lt;<cli-alert>file</cli-alert>&gt;
+    <br/>
+    Print the contents of a file.
+</p>
 {#if verbose}
     <ul>
         <li>

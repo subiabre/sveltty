@@ -1,2 +1,5 @@
-<code>clear</code>.
-<p>Clears the stdout.</p>
+<p>
+    <code>clear</code>.
+    <br />
+    Clears the stdout.
+</p>

@@ -2,8 +2,11 @@
     export let verbose: boolean = false;
 </script>
 
-<code>help</code> [<cli-info>command</cli-info>]
-<p>Print help on available commands.</p>
+<p>
+    <code>help</code> [<cli-info>command</cli-info>]
+    <br />
+    Print help on available commands.
+</p>
 {#if verbose}
     <ul>
         <li>

@@ -28,15 +28,14 @@
 
 <article>
     {#if commands.length > 1}
-        <p>Type <code>help</code> [<cli-info>command</cli-info>] to get detailed help on a given command.</p>
+        <p>
+            Type <code>help</code> [<cli-info>command</cli-info>] to get
+            detailed help on a given command.
+        </p>
         <p>Available commands:</p>
-        <ul>
-            {#each commands as command}
-                <li>
-                    <svelte:component this={command} verbose={false} />
-                </li>
-            {/each}
-        </ul>
+        {#each commands as command}
+            <svelte:component this={command} verbose={false} />
+        {/each}
     {:else}
         {#each commands as command}
             <svelte:component this={command} args={[args[1]]} verbose={true} />
