@@ -17,21 +17,17 @@
         }
 
         return [
-            CommandHelpHelp,
             CommandCatHelp,
-            CommandLsHelp,
             CommandClearHelp,
             CommandDateHelp,
+            CommandHelpHelp,
+            CommandLsHelp,
         ];
     }
 </script>
 
 <article>
     {#if commands.length > 1}
-        <p>
-            Type <code>help</code> [<cli-info>command</cli-info>] to get
-            detailed help on a given command.
-        </p>
         <p>Available commands:</p>
         {#each commands as command}
             <svelte:component this={command} verbose={false} />
