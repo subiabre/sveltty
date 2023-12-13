@@ -75,11 +75,7 @@
         min-inline-size: 100%;
         writing-mode: horizontal-tb;
 
-        box-shadow:
-            inset -1px 0 0 var(--color-text),
-            inset 0 -1px 0 var(--color-text),
-            inset 1px 0 0 var(--color-text),
-            inset 0 1px 0 var(--color-text);
+        outline: none;
     }
 
     span[contenteditable="true"]::after {
@@ -87,11 +83,12 @@
         white-space: pre;
 
         outline: none;
-    }
 
-    span[contenteditable="true"]:focus-visible {
-        outline: none;
-        box-shadow: none;
+        box-shadow:
+            inset -1px 0 0 var(--color-text),
+            inset 0 -1px 0 var(--color-text),
+            inset 1px 0 0 var(--color-text),
+            inset 0 1px 0 var(--color-text);
     }
 
     span[contenteditable="true"]:focus-visible::after {
@@ -99,6 +96,8 @@
         animation-duration: 0.61s;
         animation-direction: alternate;
         animation-iteration-count: infinite;
+
+        box-shadow: none;
     }
 
     button {
