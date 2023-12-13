@@ -101,9 +101,17 @@ code {
     font-size: 1.25em;
     font-family: var(--typeface-code);
 
-    line-height: 0.75em;
-
     color: var(--color-green);
+}
+
+kbd {
+    padding: 0.125rem 0.5rem;
+    
+    font-size: 0.75rem;
+    font-family: var(--typeface-text);
+
+    border: 1px solid var(--color-text);
+    border-radius: 5px;
 }
 
 blockquote {
@@ -150,4 +158,8 @@ h3 {
 
 h4 {
     margin: 1.5rem 0;
+}
+
+img {
+    max-width: 100%;
 }
