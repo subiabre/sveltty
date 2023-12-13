@@ -106,7 +106,7 @@ code {
 
 kbd {
     padding: 0.125rem 0.5rem;
-    
+
     font-size: 0.75rem;
     font-family: var(--typeface-text);
 
@@ -160,6 +160,7 @@ h4 {
     margin: 1.5rem 0;
 }
 
-img {
+img,
+video {
     max-width: 100%;
 }
