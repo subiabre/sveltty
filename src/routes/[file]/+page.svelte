@@ -7,7 +7,7 @@
     import { stdout } from "$lib/stdout";
 
     afterNavigate(() => {
-        stdin.set({ input: [`cat ${$page.params.file}`], index: 0 });
+        $stdin.input[$stdin.index] = `cat ${$page.params.file}`;
         stdin.send();
 
         if (
