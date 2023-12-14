@@ -146,14 +146,20 @@ p:not(:first-child) {
 
 h1 {
     margin: 2.25rem 0;
+
+    font-size: 1.5rem;
 }
 
 h2 {
     margin: 2rem 0;
+
+    font-size: 1.25rem;
 }
 
 h3 {
     margin: 1.75rem 0;
+
+    font-size: 1rem;
 }
 
 h4 {
