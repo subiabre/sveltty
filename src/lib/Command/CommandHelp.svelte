@@ -1,11 +1,6 @@
 <script lang="ts">
     import type { ComponentType } from "svelte";
-    import CommandCatHelp from "./CommandCatHelp.svelte";
-    import CommandClearHelp from "./CommandClearHelp.svelte";
-    import CommandDateHelp from "./CommandDateHelp.svelte";
-    import CommandLsHelp from "./CommandLsHelp.svelte";
-    import CommandHelpHelp from "./CommandHelpHelp.svelte";
-    import { shell } from "$lib/shell";
+    import { cmnds, shell } from "$lib/shell";
 
     export let args: string[];
 
@@ -16,13 +11,7 @@
             return [shell.help(args[1])];
         }
 
-        return [
-            CommandCatHelp,
-            CommandClearHelp,
-            CommandDateHelp,
-            CommandHelpHelp,
-            CommandLsHelp,
-        ];
+        return [...new Set(Object.entries(cmnds).map((cmd) => cmd[1].help))];
     }
 </script>
 
