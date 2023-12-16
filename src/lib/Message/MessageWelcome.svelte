@@ -1,21 +1,63 @@
+<script lang="ts">
+    import { version } from "$app/environment";
+
+    const semver = getSemver();
+    const build = getBuild();
+    const login = getLastLogin();
+
+    function getSemver(): string {
+        const date = new Date();
+
+        date.setTime(new Number(version).valueOf());
+
+        const minor = date.getMonth();
+
+        const major = Math.abs(
+            new Number(date.getFullYear().toString().substr(-2)).valueOf() - 25,
+        );
+
+        const patch =
+            date.getDate() *
+            new Number(
+                date.getMonth().toString().split("").reverse().join(""),
+            ).valueOf();
+
+        return `${major}.${minor}.${patch}`;
+    }
+
+    function getBuild(): string {
+        return new Number(version).toString(16);
+    }
+
+    function getLastLogin(): string {
+        const key = "lastlogin";
+        const val = sessionStorage.getItem(key);
+
+        sessionStorage.setItem(key, new Date().getTime().toString());
+        if (!val) {
+            return getLastLogin();
+        }
+
+        const date = new Date();
+        date.setTime(new Number(val).valueOf());
+
+        return date.toLocaleString();
+    }
+</script>
+
 <article>
-    <h1>
-        <cli-title>Hello.</cli-title>
-    </h1>
+    <p>Sveltty {semver}, build {build}.</p>
     <p>
-        I am <code>subiabre</code>. I create and write about things, mostly
-        software.
+        Sveltty is free, open-source software; the exact distribution terms are
+        described in the LICENSE file included with the source files of this
+        Sveltty instance.
     </p>
     <p>
-        This is my blog, it looks and behaves like a command line, but it's just
-        a regular website. You can still navigate by clicking around, but you'll
-        need to type some commands to discover stuff.
+        Sveltty comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+        applicable law.
     </p>
     <p>
-        Like any regular shell it has input with history (<kbd>↑</kbd> &
-        <kbd>↓</kbd>) and autocompletion (<kbd>Tab</kbd>). Unlike most shells
-        the input is not always active, you need to focus on it, in exchange you
-        get regular keyboard navigation when not on input.
+        Last login: {login}
     </p>
     <p>Type <code>help</code> to get started.</p>
 </article>
