@@ -83,7 +83,8 @@ a {
     transition: background-position 0.4s ease;
 }
 
-a:hover {
+a:hover,
+a:focus {
     color: var(--color-background);
 
     background-position: left;
