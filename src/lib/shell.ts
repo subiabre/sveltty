@@ -10,6 +10,8 @@ import CommandCatHelp from "./Command/CommandCatHelp.svelte";
 import CommandLsHelp from "./Command/CommandLsHelp.svelte";
 import CommandCat from "./Command/CommandCat.svelte";
 import CommandLs from "./Command/CommandLs.svelte";
+import CommandWhoami from "./Command/CommandWhoami.svelte";
+import CommandWhoamiHelp from "./Command/CommandWhoamiHelp.svelte";
 import { fs } from "./fs";
 
 export const cmnds = {
@@ -25,7 +27,9 @@ export const cmnds = {
 
     "help": { cmnd: CommandHelp, help: CommandHelpHelp },
 
-    "clear": { cmnd: CommandClear, help: CommandClearHelp }
+    "clear": { cmnd: CommandClear, help: CommandClearHelp },
+
+    "whoami": { cmnd: CommandWhoami, help: CommandWhoamiHelp }
 }
 
 export const shell = {
