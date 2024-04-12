@@ -1,7 +1,12 @@
 <script lang="ts">
     import { createEventDispatcher } from "svelte";
 
+    let input: HTMLSpanElement;
+
     export let value: string;
+
+    let history: string[] = [];
+    let historyIndex: number = 0;
 
     export function focus() {
         if (typeof window === "undefined") return;
@@ -27,17 +32,48 @@
         value = message;
     }
 
-    const dispatch = createEventDispatcher<{
-        input: { value: string; keyboard: KeyboardEvent };
-    }>();
-
-    let input: HTMLSpanElement;
+    const dispatch = createEventDispatcher();
 
     function handleInput(event: KeyboardEvent) {
-        dispatch("input", {
-            value: value,
-            keyboard: event,
-        });
+        dispatch("input", { value });
+
+        const args = value.split(" ").filter((arg) => arg);
+
+        // Submit
+        if (event.key === "Enter") {
+            event.preventDefault();
+
+            dispatch("submit", { args });
+
+            history = [...history.slice(0, -1), value, ""];
+            historyIndex = historyIndex + 1;
+
+            value = "";
+        }
+
+        // Autocomplete
+        if (event.key === "Tab" && event.shiftKey === false) {
+            event.preventDefault();
+
+            dispatch("autocomplete", { args });
+        }
+
+        // History
+        if (event.key === "ArrowUp") {
+            if (historyIndex === 0) return;
+
+            historyIndex--;
+            value = history[historyIndex];
+            focus();
+        }
+
+        if (event.key === "ArrowDown") {
+            if (historyIndex >= history.length - 1) return;
+
+            historyIndex++;
+            value = history[historyIndex];
+            focus();
+        }
     }
 </script>
 
