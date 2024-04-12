@@ -30,10 +30,14 @@
     }
 
     function getLastLogin(): string {
-        const key = "lastlogin";
-        const val = sessionStorage.getItem(key);
+        if (typeof localStorage === 'undefined') {
+            return '';
+        }
 
-        sessionStorage.setItem(key, new Date().getTime().toString());
+        const key = "lastlogin";
+        const val = localStorage.getItem(key);
+
+        localStorage.setItem(key, new Date().getTime().toString());
         if (!val) {
             return getLastLogin();
         }
