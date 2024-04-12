@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-
 :root {
     --color-white: #f8f9fa;
     --color-black: #000000;
@@ -13,12 +11,17 @@
 
     --line-height: 1.5em;
 
-    --typeface-code: 'VT323', monospace;
     --typeface-text: 'DejaVu Sans Mono', monospace;
 }
 
 * {
     text-rendering: geometricPrecision;
+}
+
+*::selection {
+    color: var(--color-background);
+
+    background-color: var(--color-text);
 }
 
 body {
@@ -94,13 +97,12 @@ a:focus {
 }
 
 pre {
-    padding: 0;
+    padding: 1lh 0;
     overflow-x: scroll;
 }
 
 code {
-    font-size: 1.25em;
-    font-family: var(--typeface-code);
+    font-size: 0.89rem;
 
     color: var(--color-green);
 }

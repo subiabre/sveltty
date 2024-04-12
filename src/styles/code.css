@@ -33,16 +33,16 @@ code[class*="language-"]::-moz-selection,
 code[class*="language-"] ::-moz-selection,
 pre[class*="language-"]::-moz-selection,
 pre[class*="language-"] ::-moz-selection {
-    background: #eb64b927;
-    color: inherit;
+    color: var(--color-background);
+    background: var(--color-text);
 }
 
 code[class*="language-"]::selection,
 code[class*="language-"] ::selection,
 pre[class*="language-"]::selection,
 pre[class*="language-"] ::selection {
-    background: #eb64b927;
-    color: inherit;
+    color: var(--color-background);
+    background: var(--color-text);
 }
 
 /* Properties specific to code blocks */
@@ -67,7 +67,7 @@ pre[class*="language-"] {
 .token.comment,
 .token.prolog,
 .token.cdata {
-    color: #91889b;
+    color: grey;
 }
 
 .token.punctuation {
