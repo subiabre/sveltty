@@ -1,14 +1,20 @@
 <script lang="ts">
-    import type { ComponentType } from "svelte";
+    import { afterUpdate, createEventDispatcher, type ComponentType } from "svelte";
 
     export let values: {
-        output: ComponentType;
-        props?: any;
+        component: ComponentType;
+        args?: any;
     }[] = [];
+
+    const dispatch = createEventDispatcher();
+
+    afterUpdate(() => {
+        dispatch("update");
+    });
 </script>
 
 {#each values as value}
     <div class="output">
-        <svelte:component this={value.output} {...value.props} />
+        <svelte:component this={value.component} args={[...value.args]} />
     </div>
 {/each}
