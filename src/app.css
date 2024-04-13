@@ -25,10 +25,7 @@
 }
 
 body {
-    height: calc(100dvh - 2em);
-
     margin: 0;
-    padding: 1em;
 
     font-size: 89%;
     font-family: var(--typeface-text);
