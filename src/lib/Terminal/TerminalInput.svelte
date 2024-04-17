@@ -3,7 +3,7 @@
 
     let input: HTMLSpanElement;
 
-    export let value: string;
+    export let value: string = "";
 
     let history: string[] = [];
     let historyIndex: number = 0;
