@@ -2,7 +2,7 @@
     let div: HTMLDivElement;
     let divScroll: number = 0;
 
-    export function scroll() {
+    export function scrollToBottom() {
         if (typeof div === "undefined") return;
 
         setTimeout(() => {
