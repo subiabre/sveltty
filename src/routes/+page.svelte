@@ -1,12 +1,13 @@
 <script lang="ts">
-    import { afterNavigate } from "$app/navigation";
-    import MessageWelcome from "$lib/Message/MessageWelcome.svelte";
-    import { stdin } from "$lib/stdin";
-    import { stdout } from "$lib/stdout";
+    import { onMount } from 'svelte';
+    import { stdout } from '$lib/stdout.js';
+    import MessageLs from '$lib/Message/MessageLs.svelte';
+    import CommandPrompt from '$lib/Command/CommandPrompt.svelte';
 
-    afterNavigate(() => {
-        if ($stdin.input.length < 2) {
-            stdout.write(MessageWelcome);
-        }
+    export let data;
+
+    onMount(() => {
+        stdout.write(CommandPrompt, { args: ["ls"] });
+        stdout.write(MessageLs, { posts: data.posts }); 
     });
 </script>
