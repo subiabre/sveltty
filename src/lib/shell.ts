@@ -54,7 +54,7 @@ export const shell = {
                 return [
                     args[0],
                     posts
-                        .map(post => post.slug)
+                        .map(post => post.file.file)
                         .sort((a, b) => a > b ? 1 : -1)
                         .filter(post => post.startsWith(args[1]))[0]
                 ]
