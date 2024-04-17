@@ -2,7 +2,7 @@ import type { ComponentType } from "svelte";
 import { writable } from "svelte/store";
 
 function createStdout() {
-    const { subscribe, set, update } = writable<{output: ComponentType, props?: any }[]>([]);
+    const { subscribe, set, update } = writable<{output: ComponentType, props?: any }[]>();
 
     return {
         set,
